@@ -1,0 +1,30 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="toolbarStyle">@style/Widget.AppCompat.Toolbar</item>
+    </style>
+
+    <style name="ToolBarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="windowActionModeOverlay">true</item>
+
+        <item name="android:textColorPrimary">@color/primary_white</item>
+        <item name="android:textColorSecondary">@color/primary_white</item>
+        <item name="android:layout_marginLeft">0dp</item>
+
+    </style>
+
+    <style name="AbStyle" parent="Widget.AppCompat.Toolbar">
+        <item name="elevation">2dp</item>
+        <item name="displayOptions">homeAsUp|showTitle</item>
+        <item name="android:colorBackground">@color/Primary_Grey_300</item>
+        <item name="android:textColorPrimary">@color/primary_dark_material_dark</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <!--showHome-->
+    </style>
+
+
+</resources>
+
