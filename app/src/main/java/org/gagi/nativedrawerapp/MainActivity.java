@@ -1,6 +1,9 @@
 package org.gagi.nativedrawerapp;
 
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import org.gagi.nativedrawerapp.fragments.CheeseListFragment;
 import org.gagi.nativedrawerapp.fragments.ContentFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,13 +27,25 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_coordinator);
+        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_without_drawer);
 
         setUpToolbar();
-        setUpNavigationView();
-        setUpDrawer();
+        //setUpNavigationView();
+        //setUpDrawer();
 
-
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+        CheeseListFragment fragment = new CheeseListFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frame,fragment);
+        fragmentTransaction.commit();
     }
 
     private void setUpToolbar() {
@@ -38,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         if(null != getSupportActionBar())
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        CollapsingToolbarLayout collapsingToolbar =
+                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbar.setTitle("The Doctor!");
     }
 
     private void setUpDrawer() {
@@ -150,3 +170,4 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+
